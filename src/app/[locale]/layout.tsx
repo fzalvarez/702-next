@@ -4,6 +4,10 @@ import "../globals.css";
 import { locales } from "@/i18n";
 import {unstable_setRequestLocale} from 'next-intl/server';
 
+
+import Header from '@/ui/header'; // Asegúrate de que la ruta sea correcta según tu configuración
+import Footer from '@/ui/footer/footer'; // Asegúrate de que la ruta sea correcta según tu configuración
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -25,7 +29,11 @@ export default function RootLayout({
   unstable_setRequestLocale(locale);
   return (
     <html lang={locale}>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
